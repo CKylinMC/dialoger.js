@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Dialoger</title>
+		<link href="https://cdn.bootcss.com/dialog-polyfill/0.4.9/dialog-polyfill.min.css" rel="stylesheet">
+        <link rel="Stylesheet" type="text/css" href="dist/dialoger_1.1.css" />
+    </head>
+    
+    <body>
+	<button onclick="test()">test!</button>
+		<script src="https://cdn.bootcss.com/dialog-polyfill/0.4.9/dialog-polyfill.min.js"></script>
+        <script src='dist/dialoger_1.1.js'></script>
+        <script>
+			dialoger.init();//初始化对话框
+			dialoger.newDialog("请查看源代码来获得具体使用方法！","Dialoger Demo Page","我知道了");//对话框快速调用
+			function test(){//对话框更多设置
+				dialoger.createDialog()
+						.setTitle("对话框标题")
+						.setContent("对话框内容")
+						.setOkButton("确认",(function(){alert("确认")}))
+						.setCloseButton("返回",(function(){alert("关闭")}))
+						.show();
+			}
+        </script>
+    </body>
+</html>
