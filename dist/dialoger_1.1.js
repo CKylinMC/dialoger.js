@@ -8,15 +8,15 @@
 
 ////////////[Init]////////////
 
-let dialoger = {};
+var dialoger = {};
 
 //dialoger 初始化状态
 dialoger.inited = false;
 
 //dialoger 初始化方法
-dialoger.init = function(){
+dialoger.init = function (force) {
 	if(!this.inited){
-		if(!this.checkSupport(false)) {
+		if(!this.checkSupport(false)&&!force) {
 		    console.error("[dialoger] DialogPolyfill is required with this browser!");
 		    this.inited = false;
 		    return this;
@@ -55,7 +55,7 @@ dialoger.checkInit = function(){
 };
 dialoger.checkSupport = function(showRes = true){
 	if(!document.createElement("dialog").showModal){
-		if("undefined" === typeof("dialogPolyfill")){
+		if ("undefined" === typeof (dialogPolyfill)) {
 			if(showRes) console.info("[dialoger] Your browser not support <dialog> tag, but dialogPolyfill could work! :)");
 			return true;
         }
@@ -166,12 +166,12 @@ dialoger.Element = '';
 //显示对话框
 dialoger.show = function(){
     this.Element = document.querySelector('#dialoger-dialog');
-    if(!this.Element.showModal) {
-    	if("undefined" === typeof("dialogPolyfill")){
-    		console.error("[dialoger] Can't open a dialog! Please load dialogPolyfill!");
-            this.inited = false;
-            return this;
-		}
+    if(!this.checkSupport(0)) {
+    	// if("undefined" === typeof("dialogPolyfill")){
+    	// 	console.error("[dialoger] Can't open a dialog! Please load dialogPolyfill!");
+        //     this.inited = false;
+        //     return this;
+		// }
     	dialogPolyfill.registerDialog(this.Element);
     }
     // Now dialog acts like a native <dialog>.
