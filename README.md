@@ -6,7 +6,7 @@ Dialoger是一个简单对话框组件，基于 Html5 的`<dialog>`标签。由�
 
 ## 使用
 
-在项目中引用dialoger.js和dialoger.css。如果要引用dialogPolyfill，请在dialoger引用前先引用dialogerPolyfill。
+在项目中引用dialoger.js和dialoger.css。如果要引用dialogPolyfill，请在dialoger引用前先引用dialogPolyfill。
 
 #### 初始化
 
